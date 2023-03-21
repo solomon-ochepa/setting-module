@@ -1,2 +1,2 @@
-# settings-module
+# setting-module
 Settings - Laravel module.
