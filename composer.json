@@ -17,7 +17,8 @@
     "license": "MIT",
     "require": {
         "nwidart/laravel-modules": "*",
-        "joshbrw/laravel-module-installer": "*"
+        "joshbrw/laravel-module-installer": "*",
+        "mhmiton/laravel-modules-livewire": "*"
     },
     "extra": {
         "laravel": {

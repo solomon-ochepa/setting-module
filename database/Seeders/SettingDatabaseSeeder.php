@@ -3,7 +3,6 @@
 namespace Modules\Setting\database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
 class SettingDatabaseSeeder extends Seeder
 {
@@ -14,8 +13,6 @@ class SettingDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
-        // $this->call("OthersTableSeeder");
+        $this->call([SettingSeeder::class]);
     }
 }
