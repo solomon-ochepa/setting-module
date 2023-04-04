@@ -7,21 +7,24 @@ use Illuminate\Support\Str;
 if (!function_exists('setting')) {
     function setting(String|array $name, $default = null)
     {
-        $changed    = false; // $user->isDirty(); // true
-        $key        = "settings." . Str::slug($name, '.');
-        if (Cache::has($key) and !$changed) {
-            return Cache::get($key);
-        }
+        if (is_string($name)) {
+            $changed    = false; // $user->isDirty(); // true
+            $prefix     = "settings." . Str::slug($name, '.');
+            if (Cache::has($prefix) and !$changed) {
+                return Cache::get($prefix);
+            }
 
-        $setting = Setting::where('name', $name)->Orwhere('config', $name)->value('value');
+            $setting = Setting::where('name', $name)->Orwhere('config', $name)->value('value') ?? $default;
 
-        if ($setting) {
-            $value = $setting;
+            Cache::put($prefix, $setting, 60);
+            return $setting;
         } else {
-            $value = $default;
-        }
+            foreach ($name as $key => $value) {
+                $setting = Setting::firstOrCreate(['name' => $key, 'value' => $value])->value('value');
 
-        Cache::put($key, $value, 60);
-        return $value;
+                $prefix = "settings." . Str::slug($key, '.');
+                Cache::put($prefix, $setting, 60);
+            }
+        }
     }
 }
