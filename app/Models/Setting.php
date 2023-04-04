@@ -17,13 +17,6 @@ class Setting extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'value',
-        'config'
+        'name', 'value', 'config'
     ];
-
-    public function model()
-    {
-        return $this->morphTo();
-    }
 }

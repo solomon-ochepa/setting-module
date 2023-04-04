@@ -30,7 +30,6 @@
             "Modules\\Setting\\": ""
         },
         "files": [
-            "Modules/Setting/app/helpers.php",
             "app/helpers.php"
         ]
     }
