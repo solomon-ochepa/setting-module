@@ -29,6 +29,13 @@
     "autoload": {
         "psr-4": {
             "Modules\\Setting\\": ""
+<<<<<<< Updated upstream
         }
+=======
+        },
+        "files": [
+            "app/helpers.php"
+        ]
+>>>>>>> Stashed changes
     }
 }
