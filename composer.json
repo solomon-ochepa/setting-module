@@ -29,6 +29,10 @@
     "autoload": {
         "psr-4": {
             "Modules\\Setting\\": ""
-        }
+        },
+        "files": [
+            "Modules/Setting/app/helpers.php",
+            "app/helpers.php"
+        ]
     }
 }
