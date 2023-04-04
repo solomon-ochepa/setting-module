@@ -5,25 +5,17 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
 if (!function_exists('setting')) {
-    function setting(String $slug, $default = null, bool $string = true)
+    function setting(String|array $name, $default = null)
     {
         $changed    = false; // $user->isDirty(); // true
-        $key        = "settings." . Str::slug($slug, '.');
+        $key        = "settings." . Str::slug($name, '.');
         if (Cache::has($key) and !$changed) {
             return Cache::get($key);
         }
 
-        $setting = Setting::where('name', $slug)->Orwhere('slug', $slug)->Orwhere('config', $slug)->value('value');
-        if ($setting and $string) {
-            // dd($setting);
-            if (is_array($setting) and count($setting) > 1) {
-                $value = implode(',', $setting);
-            } else if (is_array($setting)) {
-                $value = $setting[0];
-            } else {
-                $value = $setting;
-            }
-        } else if ($setting) {
+        $setting = Setting::where('name', $name)->Orwhere('config', $name)->value('value');
+
+        if ($setting) {
             $value = $setting;
         } else {
             $value = $default;
