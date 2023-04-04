@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
-            $table->string('slug')->nullable();
+            $table->string('name')->unique();
+            $table->string('slug')->unique()->nullable();
             $table->string('value')->nullable();
             $table->string('config')->nullable();
-            $table->nullableUuidMorphs('model');
             $table->timestamps();
             $table->softDeletes();
-
-            $table->unique(['name', 'model_type', 'model_id'], 'setting');
         });
     }
 
