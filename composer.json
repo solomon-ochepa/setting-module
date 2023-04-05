@@ -4,9 +4,8 @@
     "description": "Settings - Laravel module.",
     "keywords": [
         "setting-module",
-        "laravel-module",
-        "solomon-ochepa",
-        "oki technologies ltd"
+        "laravel-setting-module",
+        "laravel-modules"
     ],
     "authors": [
         {
@@ -15,10 +14,7 @@
         }
     ],
     "license": "MIT",
-    "require": {
-        "nwidart/laravel-modules": "*",
-        "joshbrw/laravel-module-installer": "*"
-    },
+    "require": {},
     "extra": {
         "laravel": {
             "providers": [],
